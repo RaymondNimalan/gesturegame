@@ -6,9 +6,10 @@ import * as handpose from '@tensorflow-models/handpose';
 import Webcam from 'react-webcam';
 import { useRef, useState, useEffect } from 'react';
 import { drawHand } from './utilities';
+import rockDescription from './rockGesture';
 
 function App() {
-  const [emoji, setEmoji] = useState(null);
+  const [emoji, setEmoji] = useState('');
 
   const webcamRef = useRef(null);
   const canvasRef = useRef(null);
@@ -44,32 +45,44 @@ function App() {
       console.log('detected hand', hand);
 
       //detect gestures
-      // if (hand.length > 0) {
-      //   const GE = new fp.GestureEstimator([fp.Gestures.VictoryGesture]);
-      //   const gesture = await GE.estimate(hand[0].landmarks, 8);
-      //   console.log(gesture);
-      //   if (gesture.gestures !== undefined && gesture.gestures.length > 0) {
-      //     const confidence = gesture.gestures.map(
-      //       (prediction) => prediction.confidence
-      //     );
-      //     const maxConfidence = confidence.indexOf(
-      //       Math.max.apply(null, confidence)
-      //     );
-      //     fp.setEmoji(gesture.gestures[maxConfidence].name);
-      //     console.log(fp.emoji);
-      //   }
-      // }
+      if (hand.length > 0) {
+        const GE = new fp.GestureEstimator([
+          fp.Gestures.VictoryGesture,
+          fp.Gestures.ThumbsUpGesture,
+          //fp.Gestures.rockGesture,
+        ]);
+        const gesture = await GE.estimate(hand[0].landmarks, 4);
+        if (gesture.gestures !== undefined && gesture.gestures.length > 0) {
+          console.log('this is gesture', gesture);
+          const confidence = gesture.gestures.map(
+            (prediction) => prediction.score
+          );
+          const maxConfidence = confidence.indexOf(
+            Math.max.apply(null, confidence)
+          );
+          console.log('confidence', confidence);
+          console.log('maxConfidence', maxConfidence);
+          console.log('gesture before set state', gesture.gestures);
+          console.log(
+            'gesture with highest confidence',
+            gesture.gestures[maxConfidence]
+          );
+          console.log('name', gesture.gestures[maxConfidence].name);
+          setEmoji(gesture.gestures[maxConfidence].name);
+        }
+      }
 
       //draw mesh
       const ctx = canvasRef.current.getContext('2d');
       drawHand(hand, ctx);
     }
   };
-  // useEffect(() => {
-  //   runHandpose();
-  // }, []);
+  useEffect(() => {
+    runHandpose();
+    console.log(emoji);
+  }, [emoji]);
 
-  runHandpose();
+  // runHandpose();
 
   return (
     <div className='App'>
