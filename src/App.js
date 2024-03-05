@@ -7,15 +7,24 @@ import Webcam from 'react-webcam';
 import { useRef, useState, useEffect } from 'react';
 import { drawHand } from './utilities';
 import rockDescription from './rockGesture';
+import paperDesciption from './paperGesture';
+//import scissorsDescription from './scissorsDescription';
 
 function App() {
-  const [emoji, setEmoji] = useState('');
+  const [playerGesture, setPlayerGesture] = useState('');
+  const [computerMove, setComputerMove] = useState('');
 
   const webcamRef = useRef(null);
   const canvasRef = useRef(null);
 
-  //function to run handpose model
+  //function to pick computers gesture randomly
+  const generateComputerMove = () => {
+    const moveChoices = ['rock', 'paper', 'scissors'];
+    const move = moveChoices[Math.floor(Math.random() * moveChoices.length)];
+    return setComputerMove(move);
+  };
 
+  //function to run handpose model
   const runHandpose = async () => {
     const net = await handpose.load();
     console.log('Handpose model loaded');
@@ -23,7 +32,7 @@ function App() {
       detect(net);
     }, 100);
   };
-
+  //function to detect hand, gesture and draw mesh
   const detect = async (net) => {
     if (
       typeof webcamRef.current !== 'undefined' &&
@@ -47,9 +56,11 @@ function App() {
       //detect gestures
       if (hand.length > 0) {
         const GE = new fp.GestureEstimator([
-          fp.Gestures.VictoryGesture,
-          fp.Gestures.ThumbsUpGesture,
-          //fp.Gestures.rockGesture,
+          // fp.Gestures.VictoryGesture,
+          // fp.Gestures.ThumbsUpGesture,
+          rockDescription,
+          paperDesciption,
+          //scissorsDescription,
         ]);
         const gesture = await GE.estimate(hand[0].landmarks, 4);
         if (gesture.gestures !== undefined && gesture.gestures.length > 0) {
@@ -68,7 +79,7 @@ function App() {
             gesture.gestures[maxConfidence]
           );
           console.log('name', gesture.gestures[maxConfidence].name);
-          setEmoji(gesture.gestures[maxConfidence].name);
+          setPlayerGesture(gesture.gestures[maxConfidence].name);
         }
       }
 
@@ -79,8 +90,8 @@ function App() {
   };
   useEffect(() => {
     runHandpose();
-    console.log(emoji);
-  }, [emoji]);
+    console.log(playerGesture);
+  }, [playerGesture]);
 
   // runHandpose();
 
