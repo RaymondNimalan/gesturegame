@@ -7,12 +7,13 @@ import Webcam from 'react-webcam';
 import { useRef, useState, useEffect } from 'react';
 import { drawHand } from './utilities';
 import rockDescription from './rockGesture';
-import paperDesciption from './paperGesture';
-//import scissorsDescription from './scissorsDescription';
+import paperDescription from './paperGesture';
+import scissorsDescription from './scissorsGesture';
 
 function App() {
   const [playerGesture, setPlayerGesture] = useState('');
   const [computerMove, setComputerMove] = useState('');
+  const [startGame, setStartGame] = useState(false);
 
   const webcamRef = useRef(null);
   const canvasRef = useRef(null);
@@ -59,8 +60,8 @@ function App() {
           // fp.Gestures.VictoryGesture,
           // fp.Gestures.ThumbsUpGesture,
           rockDescription,
-          paperDesciption,
-          //scissorsDescription,
+          paperDescription,
+          scissorsDescription,
         ]);
         const gesture = await GE.estimate(hand[0].landmarks, 4);
         if (gesture.gestures !== undefined && gesture.gestures.length > 0) {
@@ -89,7 +90,7 @@ function App() {
     }
   };
   useEffect(() => {
-    runHandpose();
+    // runHandpose();
     console.log(playerGesture);
   }, [playerGesture]);
 
