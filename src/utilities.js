@@ -56,3 +56,37 @@ export const drawHand = (predictions, ctx) => {
     });
   }
 };
+
+export const gameLogic = (playerMove, computerMove) => {
+  //check for tie
+  if (playerMove === computerMove) {
+    return 'tie';
+  }
+
+  //check for rock
+  if (playerMove === 'rock') {
+    if (computerMove === 'paper') {
+      return 'computer wins, paper beats rock';
+    } else {
+      return 'player wins rock beats scissors';
+    }
+  }
+
+  //check for paper
+  if (playerMove === 'paper') {
+    if (computerMove === 'scissors') {
+      return 'computer wins, scissors beats paper';
+    } else {
+      return 'player wins, scissors beats paper';
+    }
+  }
+
+  //check for scissors
+  if (playerMove === 'scissors') {
+    if (computerMove === 'rock') {
+      return 'computer wins, rock beats scissors';
+    } else {
+      return 'player wins, scissors beats paper';
+    }
+  }
+};
