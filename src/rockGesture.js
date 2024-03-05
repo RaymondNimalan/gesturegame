@@ -55,33 +55,40 @@ import {
 const rockDescription = new GestureDescription('rock');
 
 //all fingers curled except thumb
-for (let finger of [Finger.Index, Finger.Middle, Finger.Ring, Finger.Pinky]) {
+for (let finger of [
+  Finger.Thumb,
+  Finger.Index,
+  Finger.Middle,
+  Finger.Ring,
+  Finger.Pinky,
+]) {
   rockDescription.addCurl(finger, FingerCurl.FullCurl, 1.0);
+  rockDescription.addCurl(finger, FingerCurl.HalfCurl, 0.9);
 }
 
-//thumb is curled and pinted slighty up, slightly down or sideways
-rockDescription.addCurl(Finger.Thumb, FingerCurl.FullCurl, 1.0);
-rockDescription.addDirection(Finger.Thumb, FingerDirection.DiagonalUpLeft, 1.0);
-rockDescription.addDirection(
-  Finger.Thumb,
-  FingerDirection.DiagonalUpRight,
-  1.0
-);
-rockDescription.addDirection(
-  Finger.Thumb,
-  FingerDirection.DiagonalDownLeft,
-  1.0
-);
-rockDescription.addDirection(
-  Finger.Thumb,
-  FingerDirection.DiagonalDownright,
-  1.0
-);
-rockDescription.addDirection(Finger.Thumb, FingerDirection.HorizontalLeft, 1.0);
-rockDescription.addDirection(
-  Finger.Thumb,
-  FingerDirection.HorizontalRight,
-  1.0
-);
+// //thumb is curled and pinted slighty up, slightly down or sideways
+// rockDescription.addCurl(Finger.Thumb, FingerCurl.FullCurl, 1.0);
+// rockDescription.addDirection(Finger.Thumb, FingerDirection.DiagonalUpLeft, 1.0);
+// rockDescription.addDirection(
+//   Finger.Thumb,
+//   FingerDirection.DiagonalUpRight,
+//   1.0
+// );
+// rockDescription.addDirection(
+//   Finger.Thumb,
+//   FingerDirection.DiagonalDownLeft,
+//   1.0
+// );
+// rockDescription.addDirection(
+//   Finger.Thumb,
+//   FingerDirection.DiagonalDownright,
+//   1.0
+// );
+// rockDescription.addDirection(Finger.Thumb, FingerDirection.HorizontalLeft, 1.0);
+// rockDescription.addDirection(
+//   Finger.Thumb,
+//   FingerDirection.HorizontalRight,
+//   1.0
+// );
 
 export default rockDescription;
