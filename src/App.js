@@ -18,6 +18,12 @@ function App() {
   const webcamRef = useRef(null);
   const canvasRef = useRef(null);
 
+  //function to handle choose gesture button
+  const handleChooseGesture = async () => {
+    await generateComputerMove();
+    await runHandpose();
+  };
+
   //function to pick computers gesture randomly
   const generateComputerMove = () => {
     const moveChoices = ['rock', 'paper', 'scissors'];
