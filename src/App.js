@@ -104,6 +104,14 @@ function App() {
           <div className='nav-title'>Rock, Papers, Sissors, TensorFlow!</div>
         </div>
       </div>
+      <div
+        className='start-button'
+        onClick={() => {
+          handleChooseGesture();
+        }}
+      >
+        Choose Gesture
+      </div>
         <Webcam
           ref={webcamRef}
           style={{
