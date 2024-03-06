@@ -148,19 +148,24 @@ function App() {
             height: 480,
           }}
         />
-        {/* <img src={logo} className='App-logo' alt='logo' /> */}
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className='App-link'
-          href='https://reactjs.org'
-          target='_blank'
-          rel='noopener noreferrer'
-        >
-          Learn React
-        </a>
-      </header>
+        <div className='score-container'>
+          <div className='computer-score'>
+            <div className='score-title'>Computer</div>
+            <div className='score-counter'>0</div>
+          </div>
+          <div className='score-progress-container'>
+            <div className='score-progress'></div>
+          </div>
+          <div className='computer-score'>
+            <div className='score-title'>Computer</div>
+            <div className='score-counter'>0</div>
+          </div>
+          <div className='score-progress-container'>
+            <div className='score-progress'></div>
+          </div>
+          <div className='score-counter-2'>0</div>
+        </div>
+      </div>
     </div>
   );
 }
