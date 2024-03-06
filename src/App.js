@@ -98,7 +98,12 @@ function App() {
 
   return (
     <div className='App'>
-      <header className='App-header'>
+      <div className='nav-container'>
+        <div className='nav'>
+          <img alt='' />
+          <div className='nav-title'>Rock, Papers, Sissors, TensorFlow!</div>
+        </div>
+      </div>
         <Webcam
           ref={webcamRef}
           style={{
