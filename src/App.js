@@ -112,6 +112,14 @@ function App() {
       >
         Choose Gesture
       </div>
+      <div
+        className='start-button'
+        onClick={() => {
+          handleStartGame();
+        }}
+      >
+        Start Game
+      </div>
         <Webcam
           ref={webcamRef}
           style={{
