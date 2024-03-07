@@ -104,6 +104,33 @@ code {
   font: 400 14px Helvetica, sans-serif;
 }
 
+.instructions {
+  color: #fff;
+  text-align: center;
+  margin-top: 16px;
+  font: 400 20px Helvetica, sans-serif;
+}
+
+.webcam-container {
+  position: relative;
+  margin-top: 12px;
+  width:512px;
+  height: 288px;
+}
+
+.webcam {
+  height: 100%;
+  width: 100%;
+}
+
+.hand-map {
+  width: 384px;
+  height: 288px;
+  position: relative;
+  top:-292px;
+  left: -1px;
+}
+
 .score-container {
   display: flex;
   /* width: 512px; */
