@@ -60,3 +60,46 @@ code {
   
 
 }
+.timer-container {
+  margin-top: 12px;
+  width:512px;
+  max-width: 100%;
+  padding:24px 16px;
+}
+.timer {
+  gap:20px;
+  display: flex;
+  flex-direction: column;
+}
+.timer-column {
+  display: flex;
+  flex-direction:column;
+  line-height: normal;
+  width: 33%;
+  margin-left: 0px;
+}
+
+.column {
+  display:flex;
+  flex-grow: 1;
+  flex-direction: column;
+  color: #fff;
+  white-space: nowrap;
+}
+
+.hours-timer {
+  justify-content: center;
+  align-items: center;
+  border-radius: 12px;
+  background-color: #243d47;
+  letter-spacing: -0.27px;
+  padding: 17px 60px;
+  font: 700 18px Helvetica, sans-serif;
+
+}
+
+.hours-title {
+  align-self: center;
+  margin-top: 16px;
+  font: 400 14px Helvetica, sans-serif;
+}
