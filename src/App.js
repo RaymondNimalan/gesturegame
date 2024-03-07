@@ -132,14 +132,14 @@ function App() {
       >
         Start Game
       </div>
-        <Webcam
-          ref={webcamRef}
-          style={{
-            position: 'absolute',
-            marginLeft: 'auto',
-            marginRight: 'auto',
-            left: 0,
-            right: 0,
+      <div className='timer-container'>
+        <div className='timer'>
+          <div className='hours-column'>
+            <div className='column'>
+              <div className='hours-timer'>00</div>
+              <div className='hours-title'>Seconds</div>
+            </div>
+          </div>
             textAlign: 'center',
             zindex: 9,
             width: 640,
