@@ -59,34 +59,36 @@ export const drawHand = (predictions, ctx) => {
 
 export const gameLogic = (playerMove, computerMove) => {
   //check for tie
+  console.log('in game logic', playerMove, computerMove);
   if (playerMove === computerMove) {
-    return 'tie';
+    return [0, 'tie'];
   }
 
   //check for rock
   if (playerMove === 'rock') {
     if (computerMove === 'paper') {
-      return 'computer wins, paper beats rock';
+      return [2, 'computer wins, paper beats rock'];
     } else {
-      return 'player wins rock beats scissors';
+      return [1, 'player wins rock beats scissors'];
     }
   }
 
   //check for paper
   if (playerMove === 'paper') {
     if (computerMove === 'scissors') {
-      return 'computer wins, scissors beats paper';
+      return [2, 'computer wins, scissors beats paper'];
     } else {
-      return 'player wins, scissors beats paper';
+      return [1, 'player wins, scissors beats paper'];
     }
   }
 
   //check for scissors
   if (playerMove === 'scissors') {
     if (computerMove === 'rock') {
-      return 'computer wins, rock beats scissors';
+      return [2, 'computer wins, rock beats scissors'];
     } else {
-      return 'player wins, scissors beats paper';
+      return [1, 'player wins, scissors beats paper'];
     }
   }
+  console.log('end of game');
 };
