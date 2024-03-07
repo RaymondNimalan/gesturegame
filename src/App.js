@@ -182,6 +182,7 @@ function App() {
           <canvas ref={canvasRef} className='hand-map' />
         </div>
         <div className='score-container'>
+          <div>{gameOutcome}</div>
           <div className='computer-score'>
             <div className='score-title'>Computer</div>
             <div className='score-counter'>0</div>
