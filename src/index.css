@@ -41,3 +41,22 @@ code {
   flex-grow: 1;
   flex-basis: auto;
 }
+
+.start-button {
+  justify-content: center;
+  align-items: center;
+  border-radius: 20px;
+  background-color: #2baded;
+  margin-top: 52px;
+  width: 480px;
+  max-width: 100%;
+  color: #121c21;
+  white-space: nowrap;
+  text-align: center;
+  letter-spacing: 0.21;
+  padding: 10px 60px;
+  font: Helvetica, sans-serif;
+  cursor: pointer;
+  
+
+}
