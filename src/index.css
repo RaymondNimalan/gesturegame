@@ -12,6 +12,14 @@ code {
     monospace;
 }
 
+.App {
+  align-items: center;
+  background-color: #121c21;
+  display: flex;
+  padding-bottom: 50px;
+  flex-direction: column;
+}
+
 .nav-container {
   justify-content: center;
   align-items: start;
