@@ -14,6 +14,9 @@ function App() {
   const [playerGesture, setPlayerGesture] = useState('');
   const [computerMove, setComputerMove] = useState('');
   const [startGame, setStartGame] = useState(false);
+  const [playerScore, setPlayerScore] = useState(0);
+  const [computerScore, setComputerScore] = useState(0);
+  const [gameOutcome, setGameOutcome] = useState('');
 
   const webcamRef = useRef(null);
   const canvasRef = useRef(null);
