@@ -184,15 +184,15 @@ function App() {
         <div className='score-container'>
           <div>{gameOutcome}</div>
           <div className='computer-score'>
-            <div className='score-title'>Computer</div>
-            <div className='score-counter'>0</div>
+            <div className='score-title'>Player</div>
+            <div className='score-counter'>{playerScore}</div>
           </div>
           <div className='score-progress-container'>
             <div className='score-progress'></div>
           </div>
           <div className='computer-score'>
             <div className='score-title'>Computer</div>
-            <div className='score-counter'>0</div>
+            <div className='score-counter'>{computerScore}</div>
           </div>
           <div className='score-progress-container'>
             <div className='score-progress'></div>
