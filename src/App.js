@@ -1,6 +1,5 @@
 //import logo from './logo.svg';
 import './App.css';
-import * as tf from '@tensorflow/tfjs';
 import * as fp from 'fingerpose';
 import * as handpose from '@tensorflow-models/handpose';
 import Webcam from 'react-webcam';
@@ -13,7 +12,6 @@ import scissorsDescription from './scissorsGesture';
 function App() {
   const [playerGesture, setPlayerGesture] = useState('');
   const [computerMove, setComputerMove] = useState('');
-  const [startGame, setStartGame] = useState(false);
   const [playerScore, setPlayerScore] = useState(0);
   const [computerScore, setComputerScore] = useState(0);
   const [gameOutcome, setGameOutcome] = useState('');
