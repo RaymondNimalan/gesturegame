@@ -172,7 +172,7 @@ code {
 }
 
 .score-progress-container {
-  align-items: start;
+  /* align-items: start; */
   border-radius: 8px;
   background-color: #335466;
   display: flex;
