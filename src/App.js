@@ -35,9 +35,15 @@ function App() {
   const runHandpose = async () => {
     const net = await handpose.load();
     console.log('Handpose model loaded');
-    setInterval(() => {
+
+    const detectInterval = setInterval(() => {
       detect(net);
-    }, 100);
+    }, 500);
+
+    setTimeout(() => {
+      clearInterval(detectInterval);
+      console.log('detect function stopped after 10 sec');
+    }, 20000);
   };
   //function to detect hand, gesture and draw mesh
   const detect = async (net) => {
