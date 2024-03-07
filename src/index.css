@@ -22,7 +22,7 @@ code {
 
 .nav-container {
   justify-content: center;
-  align-items: start;
+  /* align-items: start; */
   border-bottom: 1px solid #e5e8eb;
   align-self: stretch;
   display: flex;
