@@ -103,3 +103,53 @@ code {
   margin-top: 16px;
   font: 400 14px Helvetica, sans-serif;
 }
+
+.score-container {
+  display: flex;
+  /* width: 512px; */
+  max-width:100%;
+  flex-direction: column;
+  padding-top: 16px;
+  align-self: center;
+}
+
+.computer-score {
+  margin: 12px;
+  display:flex;
+  justify-content: space-between;
+  color: #fff;
+  line-height: 150%;
+  white-space: nowrap;
+}
+
+.score-title {
+  display:flex;
+  font: 400 14px Helvetica, sans-serif;
+  color: #fff;
+
+}
+
+.score-counter {
+  display:flex;
+  font: 400 14px Helvetica, sans-serif;
+  color: #fff;
+
+}
+
+.score-progress-container {
+  align-items: start;
+  border-radius: 8px;
+  background-color: #335466;
+  display: flex;
+  flex-direction: column;
+  justify-content:center;
+  height:16px;
+
+
+}
+.score-progress {
+  color: #91b8c9;
+  margin-top: 12px;
+  font: 400 14px Helvetica, sans-serif;
+  max-width: 100%;
+}
