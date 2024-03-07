@@ -5,7 +5,7 @@ import * as fp from 'fingerpose';
 import * as handpose from '@tensorflow-models/handpose';
 import Webcam from 'react-webcam';
 import { useRef, useState, useEffect } from 'react';
-import { drawHand } from './utilities';
+import { drawHand, gameLogic } from './utilities';
 import rockDescription from './rockGesture';
 import paperDescription from './paperGesture';
 import scissorsDescription from './scissorsGesture';
@@ -47,6 +47,8 @@ function App() {
   const generateComputerMove = () => {
     const moveChoices = ['rock', 'paper', 'scissors'];
     const move = moveChoices[Math.floor(Math.random() * moveChoices.length)];
+    console.log('move generated', move);
+    setComputerMove(move);
     return setComputerMove(move);
   };
 
@@ -96,22 +98,24 @@ function App() {
         ]);
         const gesture = await GE.estimate(hand[0].landmarks, 4);
         if (gesture.gestures !== undefined && gesture.gestures.length > 0) {
-          console.log('this is gesture', gesture);
+          // console.log('this is gesture', gesture);
           const confidence = gesture.gestures.map(
             (prediction) => prediction.score
           );
           const maxConfidence = confidence.indexOf(
             Math.max.apply(null, confidence)
           );
-          console.log('confidence', confidence);
-          console.log('maxConfidence', maxConfidence);
-          console.log('gesture before set state', gesture.gestures);
-          console.log(
-            'gesture with highest confidence',
-            gesture.gestures[maxConfidence]
-          );
-          console.log('name', gesture.gestures[maxConfidence].name);
-          setPlayerGesture(gesture.gestures[maxConfidence].name);
+          // console.log('confidence', confidence);
+          // console.log('maxConfidence', maxConfidence);
+          // console.log('gesture before set state', gesture.gestures);
+          // console.log(
+          //   'gesture with highest confidence',
+          //   gesture.gestures[maxConfidence]
+          // );
+          console.log('gesture detected', gesture.gestures[maxConfidence].name);
+          if (gesture.gestures[maxConfidence].name !== null) {
+            setPlayerGesture(gesture.gestures[maxConfidence].name);
+          }
         }
       }
 
@@ -159,18 +163,18 @@ function App() {
               <div className='hours-title'>Seconds</div>
             </div>
           </div>
-            textAlign: 'center',
-            zindex: 9,
-            width: 640,
-            height: 480,
-          }}
-        />
-        <canvas
-          ref={canvasRef}
-          style={{
-            position: 'absolute',
-            marginLeft: 'auto',
-            marginRight: 'auto',
+          {/* <div className='minutes-column'>
+            <div className='column'>
+              <div className='minutes-timer'>00</div>
+              <div className='minutes'>Minutes</div>
+            </div>
+          </div>
+          <div className='seconds-column'>
+            <div className='column'>
+              <div className='seconds-timer'>00</div>
+              <div className='seconds'>Seconds</div>
+            </div>
+          </div> */}
         </div>
         <div className='instructions'>
           Choose and hold your gesture for 30 seconds
