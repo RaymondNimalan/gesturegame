@@ -171,14 +171,14 @@ function App() {
             position: 'absolute',
             marginLeft: 'auto',
             marginRight: 'auto',
-            left: 0,
-            right: 0,
-            textAlign: 'center',
-            zindex: 9,
-            width: 640,
-            height: 480,
-          }}
-        />
+        </div>
+        <div className='instructions'>
+          Choose and hold your gesture for 30 seconds
+        </div>
+        <div className='webcam-container'>
+          <Webcam ref={webcamRef} className='webcam' />
+          <canvas ref={canvasRef} className='hand-map' />
+        </div>
         <div className='score-container'>
           <div className='computer-score'>
             <div className='score-title'>Computer</div>
