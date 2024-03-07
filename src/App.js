@@ -24,6 +24,22 @@ function App() {
     await runHandpose();
   };
 
+  //function to run game logic
+  const handleStartGame = () => {
+    console.log('game started in handler');
+    console.log('copmuter move', computerMove);
+    console.log('player move', playerGesture);
+    const outcome = gameLogic(playerGesture, computerMove);
+    console.log('outcome to the game:', outcome[1]);
+    setGameOutcome(outcome[1]);
+    if (outcome[0] === 1) {
+      setPlayerScore(playerScore + 1);
+    }
+    if (outcome[0] === 2) {
+      setComputerScore(computerScore + 1);
+    }
+  };
+
   //function to pick computers gesture randomly
   const generateComputerMove = () => {
     const moveChoices = ['rock', 'paper', 'scissors'];
