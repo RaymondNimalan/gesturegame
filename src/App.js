@@ -1,5 +1,7 @@
 //import logo from './logo.svg';
 import './App.css';
+// eslint-disable-next-line
+import * as ts from '@tensorflow/tfjs';
 import * as fp from 'fingerpose';
 import * as handpose from '@tensorflow-models/handpose';
 import Webcam from 'react-webcam';
@@ -8,6 +10,7 @@ import { drawHand, gameLogic } from './utilities';
 import rockDescription from './rockGesture';
 import paperDescription from './paperGesture';
 import scissorsDescription from './scissorsGesture';
+import handlogo from './handlogo.svg';
 
 function App() {
   const [playerGesture, setPlayerGesture] = useState('');
@@ -22,7 +25,7 @@ function App() {
 
   //function to handle choose gesture button
   const handleChooseGesture = async () => {
-    await generateComputerMove();
+    generateComputerMove();
     await runHandpose();
   };
 
@@ -45,7 +48,7 @@ function App() {
     console.log('player move', playerGesture);
     const outcome = gameLogic(playerGesture, computerMove);
     console.log('outcome to the game:', outcome[1]);
-    setGameOutcome(outcome[1]);
+    setGameOutcome([outcome[1], outcome[2]]);
     if (outcome[0] === 1) {
       setPlayerScore(playerScore + 1);
     }
@@ -167,10 +170,8 @@ function App() {
       >
         Start Game
       </div>
-      <div className='timer-container'>
-        <div className='timer'>
-          <div className='hours-column'>
-            <div className='column'>
+      <div className='timer'>
+        <div className='column'>
           <div className='seconds-timer'>{timer}</div>
           <div className='seconds-title'>Seconds</div>
         </div>
@@ -184,7 +185,8 @@ function App() {
           <canvas ref={canvasRef} className='hand-map' />
         </div>
         <div className='score-container'>
-          <div>{gameOutcome}</div>
+          <div className='game-outcome'>{gameOutcome[0]}</div>
+          <div className='game-outcome'>{gameOutcome[1]}</div>
           <div className='computer-score'>
             <div className='score-title'>Player</div>
             <div className='score-counter'>{playerScore}</div>
@@ -199,7 +201,7 @@ function App() {
           <div className='score-progress-container'>
             <div className='score-progress'></div>
           </div>
-          <div className='score-counter-2'>0</div>
+          {/* <div className='score-counter-2'>0</div> */}
         </div>
       </div>
     </div>
