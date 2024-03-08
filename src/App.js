@@ -178,7 +178,7 @@ function App() {
       </div>
       <div className='game-container'>
         <div className='instructions'>
-          Choose and hold your gesture for 20 seconds
+          Choose and hold your gesture for 15 seconds
         </div>
         <div className='webcam-container'>
           <Webcam ref={webcamRef} className='webcam' />
