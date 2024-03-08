@@ -40,9 +40,11 @@ code {
   display:flex;
   gap: 16px;
 
+img {
+  height: 32px;
+  width: 32px;
+  padding-right: 4px;
 }
-
-.img {}
 
 .nav-title {
   font-family: Helvetica, sans-serif;

@@ -133,7 +133,7 @@ function App() {
     <div className='App'>
       <div className='nav-container'>
         <div className='nav'>
-          <img alt='' />
+          <img alt='' src={handlogo} />
           <div className='nav-title'>Rock, Papers, Sissors, TensorFlow!</div>
         </div>
       </div>
