@@ -15,6 +15,7 @@ function App() {
   const [playerScore, setPlayerScore] = useState(0);
   const [computerScore, setComputerScore] = useState(0);
   const [gameOutcome, setGameOutcome] = useState('');
+  const [timer, setTimer] = useState(20);
 
   const webcamRef = useRef(null);
   const canvasRef = useRef(null);
@@ -23,6 +24,18 @@ function App() {
   const handleChooseGesture = async () => {
     await generateComputerMove();
     await runHandpose();
+  };
+
+  //function for timer and resets to 30 when it hits 0
+  const startTimer = () => {
+    const interval = setInterval(() => {
+      setTimer((prevSeconds) => {
+        if (prevSeconds === 0) {
+          clearInterval(interval);
+        }
+        return prevSeconds === 0 ? 15 : prevSeconds - 1;
+      });
+    }, 1000);
   };
 
   //function to run game logic
@@ -52,6 +65,7 @@ function App() {
 
   //function to run handpose model
   const runHandpose = async () => {
+    startTimer();
     const net = await handpose.load();
     console.log('Handpose model loaded');
 
@@ -157,25 +171,13 @@ function App() {
         <div className='timer'>
           <div className='hours-column'>
             <div className='column'>
-              <div className='hours-timer'>00</div>
-              <div className='hours-title'>Seconds</div>
-            </div>
-          </div>
-          {/* <div className='minutes-column'>
-            <div className='column'>
-              <div className='minutes-timer'>00</div>
-              <div className='minutes'>Minutes</div>
-            </div>
-          </div>
-          <div className='seconds-column'>
-            <div className='column'>
-              <div className='seconds-timer'>00</div>
-              <div className='seconds'>Seconds</div>
-            </div>
-          </div> */}
+          <div className='seconds-timer'>{timer}</div>
+          <div className='seconds-title'>Seconds</div>
         </div>
+      </div>
+      <div className='game-container'>
         <div className='instructions'>
-          Choose and hold your gesture for 30 seconds
+          Choose and hold your gesture for 20 seconds
         </div>
         <div className='webcam-container'>
           <Webcam ref={webcamRef} className='webcam' />
