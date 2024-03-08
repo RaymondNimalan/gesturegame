@@ -61,33 +61,33 @@ export const gameLogic = (playerMove, computerMove) => {
   //check for tie
   console.log('in game logic', playerMove, computerMove);
   if (playerMove === computerMove) {
-    return [0, 'tie'];
+    return [0, 'Tie!'];
   }
 
   //check for rock
   if (playerMove === 'rock') {
     if (computerMove === 'paper') {
-      return [2, 'computer wins, paper beats rock'];
+      return [2, 'Computer wins!', 'Paper beats Rock'];
     } else {
-      return [1, 'player wins rock beats scissors'];
+      return [1, 'Player wins!', 'Rock beats Scissors'];
     }
   }
 
   //check for paper
   if (playerMove === 'paper') {
     if (computerMove === 'scissors') {
-      return [2, 'computer wins, scissors beats paper'];
+      return [2, 'Computer wins!', 'Scissors beats Paper'];
     } else {
-      return [1, 'player wins, scissors beats paper'];
+      return [1, 'Player wins!', 'Scissors beats Paper'];
     }
   }
 
   //check for scissors
   if (playerMove === 'scissors') {
     if (computerMove === 'rock') {
-      return [2, 'computer wins, rock beats scissors'];
+      return [2, 'Computer wins!', 'Rock beats Scissors'];
     } else {
-      return [1, 'player wins, scissors beats paper'];
+      return [1, 'Player wins!', 'Scissors beats Paper'];
     }
   }
   console.log('end of game');
