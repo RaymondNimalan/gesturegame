@@ -93,4 +93,10 @@ export const gameLogic = (playerMove, computerMove) => {
     console.log('end of game');
 };
 
-export const instructions = [''];
+export const instructions = [
+    '1. Click the Choose Gesture button and allow the app to access your camera.',
+    '2. Hold out your hand with your palm facing the camera and show either rock, paper or scissors',
+    '3. Hold the gesture for 15 seconds',
+    '4. Once, the timer runs out, click the Start Game button to begin the game',
+    '5. The computer will choose a move and the results will be displayed',
+];
